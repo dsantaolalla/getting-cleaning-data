@@ -31,9 +31,9 @@ trainTable$activity <- join(trainTableActivity, activityLabels, by="id")$label
 ## MERGING ###
 
 # Adding test to train data table
-table <- rbind(trainTable,testTable)
+mergedTable <- rbind(trainTable,testTable)
 
 #We perform the avg grouping by activity and subject
-grouped<-group_by(table, activity, subjectId)
+grouped<-group_by(mergedTable, activity, subjectId)
 summarizedTable <-summarise_each(grouped, funs(mean), matches(".mean()|.std()"))
 summarizedTable
